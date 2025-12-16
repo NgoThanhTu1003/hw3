@@ -15,7 +15,8 @@
 	</script>    
 </head>
 <body>
-    <button id="request" onclick="requestPermission(); removeBtn(this); " style="background-color: #e7e7e7; color: black; width: 100px; height: 50px;" > request permission</button>
+
+    <button id="requestBtn" style="background-color: #e7e7e7; color: black; width: 100px; height: 50px;" > request permission</button>
 
     <script type="module">
         import * as THREE from 'three';
@@ -39,7 +40,7 @@
         var ambient = new THREE.AmbientLight('white', 1);
 			  VAX.scene.add(ambient);
 
-        const controls = new OrbitControls(VAX.camera, VAX.renderer.domElement)
+        // const controls = new OrbitControls(VAX.camera, VAX.renderer.domElement)
 
         var cube = new THREE.Group();
         VAX.scene.add(cube);
@@ -86,27 +87,29 @@
           VAX.scene.add(cone4);
         }
 
-        function requestPermission(){
-          console.log("aaaaa");
+        // function requestPermission(){
+        //   console.log("aaaaa");
 
-        }
+        // }
+        requestBtn.addEventListener("click",requestPermission);
+        requestBtn.addEventListener("click",removeBtn);
 
 
 
-        // function onClick() {
-        //     if (typeof DeviceOrientationEvent.requestPermission === 'function') {
-        //         DeviceOrientationEvent.requestPermission()
-        //             .then(permissionState => {
-        //             if (permissionState === 'granted') {
-        //                 window.addEventListener("deviceorientation", deviceOrientation, true);
+        function requestPermission() {
+            if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+                DeviceOrientationEvent.requestPermission()
+                    .then(permissionState => {
+                    if (permissionState === 'granted') {
+                        window.addEventListener("deviceorientation", deviceOrientation, true);
 
-        //             }
-        //             })
-        //             .catch(console.error);
-        //         } else {
-        //             window.addEventListener("deviceorientation", deviceOrientation, true);
-        //         }
-        //     } 
+                    }
+                    })
+                    .catch(console.error);
+                } else {
+                    window.addEventListener("deviceorientation", deviceOrientation, true);
+                }
+            } 
       
 
             
@@ -126,9 +129,11 @@
 			}
 
       
-      function removeBtn(btn){
-        var element = btn;
-        element.remove(btn);
+      function removeBtn(){
+        // var element = btn;
+        // element.remove(btn);
+        var element = document.getElementById('requestBtn');
+        element.remove();
 
       }
 
