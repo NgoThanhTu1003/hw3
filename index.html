@@ -26,7 +26,7 @@
         import * as TWEEN from "three/addons/libs/tween.module.js";
 		    import * as lil from "three/addons/libs/lil-gui.module.min.js";
         
-        VAX.init(animate);
+        VAX.initParallax(animate);
 
         VAX.renderer.shadowMap.enabled=true;
         VAX.light.shadow.mapSize= new THREE.Vector2(1024*2,1024*2);
@@ -115,7 +115,8 @@
         var alpha = event.alpha.toFixed(1);
         var beta = event.beta.toFixed(1);
         var gamma = event.gamma.toFixed(1);
-        VAX.camera.position.set((-1)*alpha+90,gamma+80,0);
+        // VAX.camera.position.set((-1)*alpha+90,gamma+80,0);
+        VAX.camera.rotation.set(THREE.MathUtils.degToRad(alpha),THREE.MathUtils.degToRad(gama),THREE.MathUtils.degToRad(-beta));
 
    
 
