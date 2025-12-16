@@ -87,10 +87,7 @@
           VAX.scene.add(cone4);
         }
 
-        // function requestPermission(){
-        //   console.log("aaaaa");
 
-        // }
         requestBtn.addEventListener("click",requestPermission);
         requestBtn.addEventListener("click",removeBtn);
 
@@ -112,28 +109,20 @@
             } 
       
 
-            
-
-      var alpha=0;
-      var beta=0;
-      var gama=0;
+        
 			function deviceOrientation(event)
 			{
-				// document.getElementById('alpha').innerHTML = event.alpha.toFixed(1);
-				// document.getElementById('beta').innerHTML = event.beta.toFixed(1);
-				// document.getElementById('gamma').innerHTML = event.gamma.toFixed(1);
-				// document.getElementById('absolute').innerHTML = event.absolute;
+        var alpha = event.alpha.toFixed(1);
+        var beta = event.beta.toFixed(1);
+        var gama = event.gama.toFixed(1);
+        VAX.camera.position.set((-1)*alpha/90,gama/80,0);
 
-        alpha = event.alpha.toFixed(1);
-        beta = event.beta.toFixed(1);
-        gama = event.gama.toFixed(1);
+   
 
 			}
 
       
       function removeBtn(){
-        // var element = btn;
-        // element.remove(btn);
         var element = document.getElementById('requestBtn');
         element.remove();
 
@@ -144,7 +133,6 @@
 
        function animate(t){
           //  controls.update();
-          VAX.camera.position.set(alpha,0,gama);
 
 
             
