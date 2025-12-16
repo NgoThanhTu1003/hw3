@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script type="importmap">
+		  {
+			"imports": {
+			  "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
+			  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/",
+              "physijs": "./physijs/physi.module.js",
+              "vax": "./vax-physi.js"
+			}
+		  }
+	</script>    
+</head>
+<body>
+    <button id="request" onclick="onClick();" style="background-color: #e7e7e7; color: black; width: 100px; height: 50px;" > request permission</button>
+
+    <script type="module">
+        import * as THREE from 'three';
+        import * as VAX from 'vax';
+        import 'physijs';
+        import { OrbitControls } from "https://threejs.org/examples/jsm/controls/OrbitControls.js"        
+        import * as TWEEN from "three/addons/libs/tween.module.js";
+		    import * as lil from "three/addons/libs/lil-gui.module.min.js";
+        
+        VAX.init(animate);
+
+        VAX.renderer.shadowMap.enabled=true;
+        VAX.light.shadow.mapSize= new THREE.Vector2(1024*2,1024*2);
+        VAX.light.position.set(0,0,0);
+        VAX.light.castShadow=true;
+        VAX.scene.background= new THREE.Color(0xFFE6EA);
+
+        VAX.camera.position.set(0,0,10);
+        VAX.camera.lookAt(new THREE.Vector3(0,0,0));
+
+        var ambient = new THREE.AmbientLight('white', 1);
+			  VAX.scene.add(ambient);
+
+        const controls = new OrbitControls(VAX.camera, VAX.renderer.domElement)
+
+        var cube = new THREE.Group();
+        VAX.scene.add(cube);
+
+        var cubeMaterial = new THREE.MeshLambertMaterial({color:'cornflowerblue'});
+        var cubeGeometry = new THREE.PlaneGeometry(200,200);
+        var side1 = new THREE.Mesh(cubeGeometry, cubeMaterial );
+        var side2 = new THREE.Mesh(cubeGeometry, cubeMaterial);
+        side2.position.set(0,100,-100);
+        side2.rotation.x=Math.PI/2;
+        var side3 = new THREE.Mesh(cubeGeometry, cubeMaterial);
+        side3.position.set(0,-100,-100);
+        side3.rotation.x=Math.PI/-2;
+        var side4 = new THREE.Mesh(cubeGeometry, cubeMaterial);
+        side4.position.set(100,0,-100);
+        side4.rotation.y=Math.PI/-2;        
+        var side5 = new THREE.Mesh(cubeGeometry, cubeMaterial);
+        side5.position.set(-100,0,-100);
+        side5.rotation.y=Math.PI/2 ;   
+        var side6 = new THREE.Mesh(cubeGeometry, cubeMaterial);
+        side6.position.set(0,0,-200);
+        side1.rotation.y=-Math.PI;
+        cube.add(side1,side2,side3,side4,side5,side6);
+        cube.position.z=50;
+        
+        var coneGeo = new THREE.ConeGeometry(5,20,64,64);
+
+        for(var i=0;i<50;i++){
+          var coneMat = new THREE.MeshPhongMaterial({color: new THREE.Color(Math.random(),Math.random(),0.5+Math.random()) });
+          var cone1 = new THREE.Mesh(coneGeo,coneMat);
+          cone1.position.set(THREE.MathUtils.randFloat(-90,90),THREE.MathUtils.randFloat(-90,90),-130);
+          VAX.scene.add(cone1);
+
+          var cone2 = new THREE.Mesh(coneGeo,coneMat);
+          cone2.position.set(-90,THREE.MathUtils.randFloat(-90,90),THREE.MathUtils.randFloat(-90,90));
+          VAX.scene.add(cone2);
+
+          var cone3 = new THREE.Mesh(coneGeo,coneMat);
+          cone3.position.set(90,THREE.MathUtils.randFloat(-90,90),THREE.MathUtils.randFloat(-90,90));
+          VAX.scene.add(cone3);
+
+          var cone4 = new THREE.Mesh(coneGeo,coneMat);
+          cone4.position.set(THREE.MathUtils.randFloat(-90,90),THREE.MathUtils.randFloat(-90,90),40);
+          VAX.scene.add(cone4);
+        }
+
+        function onClick() {
+            if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+                DeviceOrientationEvent.requestPermission()
+                    .then(permissionState => {
+                    if (permissionState === 'granted') {
+                        window.addEventListener("deviceorientation", deviceOrientation, true);
+
+                    }
+                    })
+                    .catch(console.error);
+                } else {
+                    window.addEventListener("deviceorientation", deviceOrientation, true);
+                }
+            }        
+
+			function deviceOrientation(event)
+			{
+				// document.getElementById('alpha').innerHTML = event.alpha.toFixed(1);
+				// document.getElementById('beta').innerHTML = event.beta.toFixed(1);
+				// document.getElementById('gamma').innerHTML = event.gamma.toFixed(1);
+				// document.getElementById('absolute').innerHTML = event.absolute;
+
+        var alpha = event.alpha.toFixed(1);
+        var beta = event.beta.toFixed(1);
+        var gama = event.gama.toFixed(1);
+
+			}
+
+
+
+
+
+
+       function animate(t){
+          //  controls.update();
+
+
+            
+        }
+
+
+
+
+
+
+
+        </script>
+</body>
+</html>
