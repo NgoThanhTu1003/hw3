@@ -86,20 +86,31 @@
           VAX.scene.add(cone4);
         }
 
-        function onClick() {
-            if (typeof DeviceOrientationEvent.requestPermission === 'function') {
-                DeviceOrientationEvent.requestPermission()
-                    .then(permissionState => {
-                    if (permissionState === 'granted') {
-                        window.addEventListener("deviceorientation", deviceOrientation, true);
+        function requestPermission(){
+          console.log("aaaaa");
 
-                    }
-                    })
-                    .catch(console.error);
-                } else {
-                    window.addEventListener("deviceorientation", deviceOrientation, true);
-                }
-            }        
+        }
+
+
+
+        // function onClick() {
+        //     if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+        //         DeviceOrientationEvent.requestPermission()
+        //             .then(permissionState => {
+        //             if (permissionState === 'granted') {
+        //                 window.addEventListener("deviceorientation", deviceOrientation, true);
+
+        //             }
+        //             })
+        //             .catch(console.error);
+        //         } else {
+        //             window.addEventListener("deviceorientation", deviceOrientation, true);
+        //         }
+        //     } 
+      
+
+            
+
 
 			function deviceOrientation(event)
 			{
