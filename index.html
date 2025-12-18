@@ -28,8 +28,6 @@
         
         VAX.init(animate);
         VAX.scene.rotation.z=Math.PI/-2;
-        VAX.scene.rotation.y=Math.PI/-2;
-        // VAX.scene.rotation.y=Math.PI/2;
         VAX.renderer.shadowMap.enabled=true;
         VAX.light.shadow.mapSize= new THREE.Vector2(1024*2,1024*2);
         VAX.light.position.set(0,0,0);
@@ -42,7 +40,7 @@
         var ambient = new THREE.AmbientLight('white', 1);
 			  VAX.scene.add(ambient);
 
-        // const controls = new OrbitControls(VAX.camera, VAX.renderer.domElement)
+        const controls = new OrbitControls(VAX.camera, VAX.renderer.domElement)
 
         var cube = new THREE.Group();
         VAX.scene.add(cube);
@@ -69,23 +67,31 @@
         cube.position.z=50;
         
         var coneGeo = new THREE.ConeGeometry(5,20,64,64);
-
+// new THREE.Color(Math.random(),Math.random(),0.5+Math.random())
         for(var i=0;i<50;i++){
-          var coneMat = new THREE.MeshPhongMaterial({color: new THREE.Color(Math.random(),Math.random(),0.5+Math.random()) });
-          var cone1 = new THREE.Mesh(coneGeo,coneMat);
-          cone1.position.set(THREE.MathUtils.randFloat(-90,90),THREE.MathUtils.randFloat(-90,90),-130);
+          var coneMat1 = new THREE.MeshPhongMaterial({color: 'yellow' });
+          var coneMat2 = new THREE.MeshPhongMaterial({color: 'red' });
+          var coneMat3 = new THREE.MeshPhongMaterial({color: 'blue' });
+          var coneMat4 = new THREE.MeshPhongMaterial({color: 'green' });
+
+          var cone1 = new THREE.Mesh(coneGeo,coneMat1);
+          cone1.position.set(THREE.MathUtils.randFloat(-90,90),-130,THREE.MathUtils.randFloat(-90,90));
+          cone1.rotation.x=Math.PI/2;
           VAX.scene.add(cone1);
 
-          var cone2 = new THREE.Mesh(coneGeo,coneMat);
+          var cone2 = new THREE.Mesh(coneGeo,coneMat2);
+          cone2.rotation.z=Math.PI/-2;
           cone2.position.set(-90,THREE.MathUtils.randFloat(-90,90),THREE.MathUtils.randFloat(-90,90));
           VAX.scene.add(cone2);
 
-          var cone3 = new THREE.Mesh(coneGeo,coneMat);
+          var cone3 = new THREE.Mesh(coneGeo,coneMat3);
+          cone3.rotation.z=Math.PI/-2;
           cone3.position.set(90,THREE.MathUtils.randFloat(-90,90),THREE.MathUtils.randFloat(-90,90));
           VAX.scene.add(cone3);
 
-          var cone4 = new THREE.Mesh(coneGeo,coneMat);
-          cone4.position.set(THREE.MathUtils.randFloat(-90,90),THREE.MathUtils.randFloat(-90,90),40);
+          var cone4 = new THREE.Mesh(coneGeo,coneMat4);
+          cone4.rotation.x=Math.PI/2;
+          cone4.position.set(THREE.MathUtils.randFloat(-90,90),40,THREE.MathUtils.randFloat(-90,90));
           VAX.scene.add(cone4);
         }
 
@@ -134,7 +140,7 @@
 
 
        function animate(t){
-          //  controls.update();
+           controls.update();
 
 
             
