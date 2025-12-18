@@ -126,7 +126,15 @@
         var alpha = event.alpha.toFixed(1);
         var beta = event.beta.toFixed(1);
         var gamma = event.gamma.toFixed(1);
-        VAX.camera.rotation.set(THREE.MathUtils.degToRad(beta),THREE.MathUtils.degToRad(gamma),THREE.MathUtils.degToRad(0));
+        var gamma2 = 0;
+
+        if (gamma>0 ){
+          gamma2 = THREE.MathUtils.degToRad(-90+(gamma-90));
+        }else{
+          gamma2 = THREE.MathUtils.degToRad(gamma);
+        }
+
+        VAX.camera.rotation.set(THREE.MathUtils.degToRad(alpha),gamma2,THREE.MathUtils.degToRad(0));
 
    
 
