@@ -127,8 +127,8 @@
 			{
         var alpha1 = THREE.MathUtils.degToRad(event.alpha);
         var beta1 = THREE.MathUtils.degToRad(event.beta);
-        var gamma1 = THREE.MathUtils.degToRad(event.gamma);
-        VAX.camera.rotation.set(THREE.MathUtils.degToRad(alpha1),THREE.MathUtils.degToRad(gamma1),THREE.MathUtils.degToRad(beta1));
+        var gamma1 = THREE.MathUtils.degToRad(event.gamma+90);
+        VAX.camera.rotation.set(alpha1,gamma1,beta1);
 
         // if (event.gamma>0 ){
 
@@ -143,9 +143,9 @@
 
         // }
         
-        VAX.camera.rotation.y = gamma1;
+        // VAX.camera.rotation.y = gamma1;
 
-        VAX.camera.rotation.x = beta1;
+        // VAX.camera.rotation.x = beta1;
 
 
 
