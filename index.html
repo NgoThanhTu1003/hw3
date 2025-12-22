@@ -26,7 +26,7 @@
         import * as TWEEN from "three/addons/libs/tween.module.js";
 		    import * as lil from "three/addons/libs/lil-gui.module.min.js";
         
-        VAX.init(animate);
+        VAX.initParallax(animate);
         VAX.scene.rotation.z=Math.PI/2;
         // VAX.scene.rotation.y=Math.PI/2;
         VAX.scene.rotation.x=Math.PI/-2;
@@ -129,22 +129,7 @@
         var beta1 = THREE.MathUtils.degToRad(event.beta);
         var gamma1 = THREE.MathUtils.degToRad(event.gamma+90);
         VAX.camera.rotation.set(beta1,alpha1,0);
-        // if (event.gamma>0 ){
 
-        //   var gamma1 = THREE.MathUtils.degToRad(-180+(gamma-90));
-
-        //   VAX.camera.rotation.y = (gamma1);
-
-        // }else{
-
-        //   var gamma1 = THREE.MathUtils.degToRad(gamma-90);
-        //   VAX.camera.rotation.y = (gamma1);
-
-        // }
-        
-        // VAX.camera.rotation.y = gamma1;
-
-        // VAX.camera.rotation.x = beta1;
 
 
 
