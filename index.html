@@ -129,20 +129,21 @@
 
         if (gamma>0 ){
           gamma2 = THREE.MathUtils.degToRad(-90+(gamma-90));
-          VAX.camera.rotation.y = (gamma2);
+          // VAX.camera.rotation.y = (gamma2);
 
 
         }else{
           gamma2 = THREE.MathUtils.degToRad(gamma);
-          VAX.camera.rotation.y = (gamma2);
 
           // VAX.camera.rotation.set(THREE.MathUtils.degToRad(beta),gamma2,THREE.MathUtils.degToRad(0));
 
         }
+         VAX.camera.rotation.y = (gamma2);
+
           // VAX.camera.rotation.set(THREE.MathUtils.degToRad(0),gamma2,THREE.MathUtils.degToRad(0));
 
         if (alpha){
-          VAX.camera.rotation.x = THREE.MathUtils.degToRad(alpha);
+          VAX.camera.rotation.z = THREE.MathUtils.degToRad(alpha);
 
         }
 
