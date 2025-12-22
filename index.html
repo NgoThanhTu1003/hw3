@@ -126,9 +126,9 @@
         
 			function deviceOrientation(event)
 			{
-        var alpha = Number(event.alpha);
-        var beta = Number(event.beta);
-        var gamma = Number(event.gamma);
+        var alpha1 = THREE.MathUtils.degToRad(event.alpha);
+        var beta1 = THREE.MathUtils.degToRad(event.beta);
+        var gamma1 = THREE.MathUtils.degToRad(event.gamma);
 
         // if (gamma>0 ){
 
@@ -143,9 +143,9 @@
 
         // }
         
-        VAX.camera.rotation.y = THREE.MathUtils.degToRad(alpha);
+        VAX.camera.rotation.y = alpha1;
 
-        VAX.camera.rotation.x = THREE.MathUtils.degToRad(beta);
+        VAX.camera.rotation.x = beta1;
 
 
 
