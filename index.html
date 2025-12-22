@@ -122,28 +122,27 @@
                 }
             } 
       
-        var gamma2 = 0;
         
 			function deviceOrientation(event)
 			{
         var alpha1 = THREE.MathUtils.degToRad(180-event.alpha);
         var beta1 = THREE.MathUtils.degToRad(event.beta);
-        var gamma1 = THREE.MathUtils.degToRad(Math.floor(event.gamma-90));
+        // var gamma1 = THREE.MathUtils.degToRad(event.gamma-90);
 
-        // if (gamma>0 ){
+        if (event.gamma>0 ){
 
-        //   gamma2 = THREE.MathUtils.degToRad(-90+(gamma-90));
+          var gamma1 = THREE.MathUtils.degToRad(-180+(gamma-90));
 
-        //   VAX.camera.rotation.y = (gamma2);
+          VAX.camera.rotation.y = (gamma1);
 
-        // }else{
+        }else{
 
-        //   gamma2 = THREE.MathUtils.degToRad(gamma);
-        //   VAX.camera.rotation.y = (gamma2);
+          var gamma1 = THREE.MathUtils.degToRad(gamma-90);
+          VAX.camera.rotation.y = (gamma1);
 
-        // }
+        }
         
-        VAX.camera.rotation.y = gamma1;
+        // VAX.camera.rotation.y = gamma1;
 
         VAX.camera.rotation.x = alpha1;
 
