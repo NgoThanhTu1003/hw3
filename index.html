@@ -130,22 +130,22 @@
         var beta = Number(event.beta);
         var gamma = Number(event.gamma);
 
-        if (gamma>0 ){
+        // if (gamma>0 ){
 
-          // gamma2 = THREE.MathUtils.degToRad(-90+(gamma-90));
+        //   gamma2 = THREE.MathUtils.degToRad(-90+(gamma-90));
 
-          VAX.camera.rotation.y = (gamma2);
+        //   VAX.camera.rotation.y = (gamma2);
 
-        }else{
+        // }else{
 
-          gamma2 = THREE.MathUtils.degToRad(gamma);
-          VAX.camera.rotation.y = (gamma2);
+        //   gamma2 = THREE.MathUtils.degToRad(gamma);
+        //   VAX.camera.rotation.y = (gamma2);
 
-        }
+        // }
         
-        VAX.camera.rotation.y = (gamma2);
+        VAX.camera.rotation.y = (alpha);
 
-        VAX.camera.rotation.x = THREE.MathUtils.degToRad(alpha);
+        VAX.camera.rotation.x = THREE.MathUtils.degToRad(beta);
 
 
 
