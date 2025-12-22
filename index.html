@@ -128,7 +128,7 @@
         var alpha1 = THREE.MathUtils.degToRad(event.alpha);
         var beta1 = THREE.MathUtils.degToRad(event.beta);
         var gamma1 = THREE.MathUtils.degToRad(event.gamma+90);
-        VAX.camera.rotation.set(alpha1,0,beta1);
+        VAX.camera.rotation.set(beta1,alpha1,0);
 
         // if (event.gamma>0 ){
 
