@@ -119,14 +119,13 @@
                 }
             } 
       
-
+        var gamma2 = 0;
         
 			function deviceOrientation(event)
 			{
         var alpha = event.alpha.toFixed(1);
         var beta = event.beta.toFixed(1);
         var gamma = event.gamma.toFixed(1);
-        var gamma2 = 0;
 
         if (gamma>0 ){
           gamma2 = THREE.MathUtils.degToRad(-90+(gamma-90));
