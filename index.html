@@ -28,7 +28,7 @@
         
         VAX.init(animate);
         VAX.scene.rotation.z=Math.PI/-2;
-        VAX.scene.rotation.y=-Math.PI/-2;
+        VAX.scene.rotation.y=-Math.PI/2;
         // VAX.scene.rotation.x=Math.PI/-2;
 
         VAX.renderer.shadowMap.enabled=true;
@@ -126,7 +126,7 @@
         
 			function deviceOrientation(event)
 			{
-        var alpha1 = THREE.MathUtils.degToRad(event.alpha);
+        var alpha1 = THREE.MathUtils.degToRad(180-event.alpha);
         var beta1 = THREE.MathUtils.degToRad(event.beta);
         var gamma1 = THREE.MathUtils.degToRad(event.gamma-90);
 
