@@ -128,7 +128,7 @@
 			{
         var alpha = Number(event.alpha);
         var beta = Number(event.beta);
-        var gamma = Number(event.gamma);
+        var gamma = Math.floor(Number(event.gamma));
         gamma2 = THREE.MathUtils.degToRad(gamma+90);
 
         if (gamma>0 ){
