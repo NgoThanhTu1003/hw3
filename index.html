@@ -28,7 +28,7 @@
         
         VAX.init(animate);
         VAX.scene.rotation.z=Math.PI/-2;
-        VAX.scene.rotation.y=Math.PI/-2;
+        // VAX.scene.rotation.y=Math.PI/-2;
 
         VAX.renderer.shadowMap.enabled=true;
         VAX.light.shadow.mapSize= new THREE.Vector2(1024*2,1024*2);
@@ -128,19 +128,14 @@
         var alpha = Number(event.alpha);
         var beta = Number(event.beta);
         var gamma = Number(event.gamma);
+        gamma2 = THREE.MathUtils.degToRad(gamma);
 
-        // if (gamma>0 ){
-        //   gamma2 = THREE.MathUtils.degToRad(-90+(gamma-90));
-        //   // VAX.camera.rotation.y = (gamma2);
+        if (gamma>0 ){
+          gamma2 = THREE.MathUtils.degToRad(-90+(gamma-90));
 
 
-        // }else{
-        //   gamma2 = THREE.MathUtils.degToRad(gamma);
-
-        //   // VAX.camera.rotation.set(THREE.MathUtils.degToRad(beta),gamma2,THREE.MathUtils.degToRad(0));
-
-        // }
-        gamma2 = THREE.MathUtils.degToRad(-(90-gamma));
+        }
+        
         VAX.camera.rotation.y = (gamma2);
 
           // VAX.camera.rotation.set(THREE.MathUtils.degToRad(0),gamma2,THREE.MathUtils.degToRad(0));
