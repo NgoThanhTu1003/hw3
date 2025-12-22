@@ -28,7 +28,7 @@
         
         VAX.init(animate);
         VAX.scene.rotation.z=Math.PI/-2;
-        VAX.scene.rotation.y=Math.PI/2;
+        // VAX.scene.rotation.y=Math.PI/2;
         // VAX.scene.rotation.x=Math.PI/2;
 
         VAX.renderer.shadowMap.enabled=true;
@@ -143,9 +143,9 @@
         VAX.camera.rotation.y = (gamma2);
 
           // VAX.camera.rotation.set(THREE.MathUtils.degToRad(0),gamma2,THREE.MathUtils.degToRad(0));
+          VAX.camera.rotation.x = THREE.MathUtils.degToRad(alpha);
 
         if (alpha){
-          VAX.camera.rotation.x = THREE.MathUtils.degToRad(alpha);
 
         }
 
