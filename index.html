@@ -125,9 +125,9 @@
         
 			function deviceOrientation(event)
 			{
-        var alpha1 = THREE.MathUtils.degToRad(180-event.alpha);
+        var alpha1 = THREE.MathUtils.degToRad(event.alpha);
         var beta1 = THREE.MathUtils.degToRad(event.beta);
-        var gamma1 = THREE.MathUtils.degToRad(event.gamma-90);
+        var gamma1 = THREE.MathUtils.degToRad(event.gamma);
 
         // if (event.gamma>0 ){
 
