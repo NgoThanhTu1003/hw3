@@ -125,22 +125,44 @@
         
 			function deviceOrientation(event)
 			{
-        var alpha1 = THREE.MathUtils.degToRad(event.alpha);
-        var beta1 = THREE.MathUtils.degToRad(event.beta);
-        var gamma1 = THREE.MathUtils.degToRad(event.gamma);
-        var euler = new THREE.Euler(alpha1, gamma1, 0, 'YXZ');
-        const screenTransform = new THREE.Quaternion();
-        screenTransform.setFromAxisAngle(
-          new THREE.Vector3(0, 0, 1),
-          -Math.PI / 2
+        // var alpha1 = THREE.MathUtils.degToRad(event.alpha);
+        // var beta1 = THREE.MathUtils.degToRad(event.beta);
+        // var gamma1 = THREE.MathUtils.degToRad(event.gamma);
+        // var euler = new THREE.Euler(alpha1, gamma1, 0, 'YXZ');
+        // const screenTransform = new THREE.Quaternion();
+        // screenTransform.setFromAxisAngle(
+        //   new THREE.Vector3(0, 0, 1),
+        //   -Math.PI / 2
+        // );
+
+        // const deviceQuat = new THREE.Quaternion();
+        // deviceQuat.setFromEuler(euler);
+
+        // deviceQuat.multiply(screenTransform);
+
+        // VAX.camera.quaternion.copy(deviceQuat);
+
+        const alpha = THREE.MathUtils.degToRad(event.alpha || 0);
+        const beta  = THREE.MathUtils.degToRad(event.beta  || 0);
+        const gamma = THREE.MathUtils.degToRad(event.gamma || 0);
+
+        // LANDSCAPE-RIGHT mapping
+        const yaw   = -alpha;
+        const pitch = -gamma;
+
+        // Clamp pitch so it can NEVER flip
+        const maxPitch = Math.PI / 2 - 0.01;
+        const clampedPitch = THREE.MathUtils.clamp(
+          pitch,
+          -maxPitch,
+          maxPitch
         );
 
-        const deviceQuat = new THREE.Quaternion();
-        deviceQuat.setFromEuler(euler);
-
-        deviceQuat.multiply(screenTransform);
-
-        VAX.camera.quaternion.copy(deviceQuat);
+        // FPS camera rotation (NO ROLL)
+        VAX.camera.rotation.order = 'YXZ';
+        VAX.camera.rotation.y = yaw;
+        VAX.camera.rotation.x = clampedPitch;
+        VAX.camera.rotation.z = 0;
 
 
 
