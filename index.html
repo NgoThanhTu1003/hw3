@@ -125,47 +125,21 @@
         
 			function deviceOrientation(event)
 			{
-        // var alpha1 = THREE.MathUtils.degToRad(event.alpha);
-        // var beta1 = THREE.MathUtils.degToRad(event.beta);
-        // var gamma1 = THREE.MathUtils.degToRad(event.gamma);
-        // var euler = new THREE.Euler(alpha1, gamma1, 0, 'YXZ');
-        // const screenTransform = new THREE.Quaternion().setFromAxisAngle(
-        //   new THREE.Vector3(0, 0, 1),
-        //   -Math.PI / 2
-        // );
-
-        // const deviceQuat = new THREE.Quaternion().setFromEuler(euler);
-
-        // deviceQuat.multiply(screenTransform);
-
-        // VAX.camera.quaternion.copy(deviceQuat);
-
         var alpha1 = THREE.MathUtils.degToRad(event.alpha);
         var beta1 = THREE.MathUtils.degToRad(event.beta);
         var gamma1 = THREE.MathUtils.degToRad(event.gamma);
+        var euler = new THREE.Euler(alpha1, gamma1, 0, 'YXZ');
+        const screenTransform = new THREE.Quaternion().setFromAxisAngle(
+          new THREE.Vector3(0, 0, 1),
+          -Math.PI / 2
+        );
 
-        // For landscape-right-up orientation:
-        // Create quaternion directly from device orientation angles
-        // This avoids gimbal lock
-        const x = new THREE.Quaternion();
-        x.setFromAxisAngle(new THREE.Vector3(0, 0, 1), alpha1); // Compass
+        const deviceQuat = new THREE.Quaternion().setFromEuler(euler);
 
-        const z = new THREE.Quaternion();
-        z.setFromAxisAngle(new THREE.Vector3(1, 0, 0), -beta1); // Front/back tilt
+        deviceQuat.multiply(screenTransform);
 
-        const y = new THREE.Quaternion();
-        y.setFromAxisAngle(new THREE.Vector3(0, 1, 0), -gamma1); // Left/right tilt
-
-        // Combine in correct order for landscape-right-up
-        const deviceQuat = new THREE.Quaternion();
-        deviceQuat.multiply(y);  // Apply left/right tilt first
-        deviceQuat.multiply(x);  // Then front/back tilt
-        deviceQuat.multiply(z);  // Finally compass
-
-        // Apply to camera
         VAX.camera.quaternion.copy(deviceQuat);
 
-        
 
 
 
