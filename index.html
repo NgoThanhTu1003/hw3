@@ -130,13 +130,17 @@
         var gamma1 = THREE.MathUtils.degToRad(event.gamma);
         // VAX.camera.rotation.set(beta1,alpha1,0);
         var q = new THREE.Quaternion();
-        q.setFromEuler(new THREE.Euler( beta1,alpha1,gamma1));
+        q.setFromEuler(new THREE.Euler( beta1,alpha1,-gamma1));
 
-        var vc = new THREE.Vector3(0,0,-1);
+        // var vc = new THREE.Vector3(0,0,1);
 
         vc.applyQuaternion(q);
 
-        VAX.camera.rotation.set(vc.x,vc.y,0);
+        var landscapeQuat = new THREE.Quaternion();
+        landscapeQuat.setFromAxisAngle(new THREE.Vector3(0, 0, 1),-Math.PI / 2);
+        q.multiply(landscapeQuat);
+
+        VAX.camera.rotation.set(q.x,q.y,0);
 
       
 
