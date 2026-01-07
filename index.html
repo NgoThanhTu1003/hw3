@@ -147,10 +147,10 @@
         // For landscape-right-up orientation:
         // Create quaternion directly from device orientation angles
         // This avoids gimbal lock
-        const z = new THREE.Quaternion();
+        const x = new THREE.Quaternion();
         x.setFromAxisAngle(new THREE.Vector3(0, 0, 1), alpha1); // Compass
 
-        const x = new THREE.Quaternion();
+        const z = new THREE.Quaternion();
         z.setFromAxisAngle(new THREE.Vector3(1, 0, 0), -beta1); // Front/back tilt
 
         const y = new THREE.Quaternion();
