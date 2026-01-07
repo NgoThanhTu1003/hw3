@@ -146,7 +146,7 @@
         );
 
         const deviceQuat = new THREE.Quaternion();
-        deviceQuat.setFromEuler(deviceEuler);
+        deviceQuat.setFromEuler(euler);
 
         // Apply screen orientation correction
         deviceQuat.multiply(screenTransform);
