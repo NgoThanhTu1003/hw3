@@ -128,17 +128,7 @@
         var alpha1 = THREE.MathUtils.degToRad(event.alpha);
         var beta1 = THREE.MathUtils.degToRad(event.beta);
         var gamma1 = THREE.MathUtils.degToRad(event.gamma);
-        // VAX.camera.rotation.set(beta1,alpha1,0);
-        // var q = new THREE.Quaternion();
-        // q.setFromEuler(new THREE.Euler( beta1,alpha1,gamma1));
-
-        // var vc = new THREE.Vector3(0,0,-1);
-
-        // vc.applyQuaternion(q);
-
-        // VAX.camera.rotation.set(vc.y,vc.x,0);
-        var euler = new THREE.Euler(beta1, -alpha1, -gamma, 'YXZ');
-        // VAX.camera.quaternion.setFromEuler(euler);
+        var euler = new THREE.Euler(beta1, -alpha1, -gamma1, 'YXZ');
         const screenTransform = new THREE.Quaternion();
         screenTransform.setFromAxisAngle(
           new THREE.Vector3(0, 0, 1),
@@ -148,10 +138,8 @@
         const deviceQuat = new THREE.Quaternion();
         deviceQuat.setFromEuler(euler);
 
-        // Apply screen orientation correction
         deviceQuat.multiply(screenTransform);
 
-        // Apply to camera
         VAX.camera.quaternion.copy(deviceQuat);
 
 
