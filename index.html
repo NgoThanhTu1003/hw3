@@ -134,6 +134,9 @@
           -Math.PI / 2
         );
 
+        const deviceQuat = new THREE.Quaternion().setFromEuler(euler).multiply(screenTransform);
+
+        VAX.camera.quaternion.copy(deviceQuat);
 
 
 
