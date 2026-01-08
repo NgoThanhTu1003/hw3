@@ -26,7 +26,7 @@
         import * as TWEEN from "three/addons/libs/tween.module.js";
 		    import * as lil from "three/addons/libs/lil-gui.module.min.js";
         
-        VAX.initParallax(animate,3);
+        VAX.init(animate);
         // VAX.scene.rotation.z=Math.PI/2;
         // VAX.scene.rotation.y=Math.PI/2;
         // VAX.scene.rotation.x=Math.PI/-2;
@@ -128,7 +128,7 @@
         var alpha1 = THREE.MathUtils.degToRad(event.alpha);
         var beta1 = THREE.MathUtils.degToRad(event.beta);
         var gamma1 = THREE.MathUtils.degToRad(event.gamma);
-        var euler = new THREE.Euler(alpha1, gamma1, 0, 'YXZ');
+        var euler = new THREE.Euler(-beta1, gamma1, 0, 'YXZ');
         const screenTransform = new THREE.Quaternion().setFromAxisAngle(
           new THREE.Vector3(0, 0, 1),
           -Math.PI / 2
